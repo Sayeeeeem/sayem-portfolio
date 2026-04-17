@@ -1,41 +1,12 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { ArrowDown, Download } from "lucide-react";
 import { portfolioContent } from "@/config/portfolio";
 
 const HeroSection = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const heroImage = `${import.meta.env.BASE_URL}sayemicon.jpg`;
 
   return (
     <section className="min-h-screen flex flex-col justify-center section-padding relative">
-      <div className="md:hidden absolute top-6 right-6 z-20">
-        <button
-          type="button"
-          aria-label="Open menu"
-          onClick={() => setMenuOpen((open) => !open)}
-          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-border bg-card/95 p-2 text-foreground shadow-sm"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-          <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-          <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-        </button>
-
-        {menuOpen && (
-          <div className="mt-2 w-52 rounded-3xl border border-border bg-background/95 p-3 shadow-xl backdrop-blur-sm">
-            {portfolioContent.navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="block rounded-xl px-3 py-2 text-sm text-foreground hover:bg-accent/10 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
